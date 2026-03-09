@@ -1,0 +1,64 @@
+# ─────────────────────────────────────────────
+# UiPath AI Monitoring - Configuration
+# ─────────────────────────────────────────────
+
+project:
+  name: "uipath_ai_monitoring"
+  version: "1.0.0"
+  description: "ML + Groq AI pipeline for UiPath log analysis"
+
+paths:
+  raw_data_dir: "data/sample_logs"
+  processed_data_dir: "artifacts/data"
+  model_dir: "artifacts/models"
+  reports_dir: "artifacts/reports"
+  log_file: "logs/pipeline.log"
+
+data_ingestion:
+  required_columns:
+    - timestamp
+    - log_level
+    - process_name
+    - message
+  optional_columns:
+    - exception_type
+    - exception_message
+    - robot_name
+    - job_id
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+data_validation:
+  max_missing_pct: 0.30
+  valid_log_levels:
+    - INFO
+    - WARN
+    - WARNING
+    - ERROR
+    - FATAL
+    - DEBUG
+    - TRACE
+
+feature_engineering:
+  tfidf_max_features: 500
+  tfidf_ngram_range: [1, 2]
+  min_df: 2
+  target_column: "is_error"
+
+model_training:
+  test_size: 0.20
+  random_state: 42
+  cv_folds: 5
+  models:
+    - RandomForest
+    - LogisticRegression
+    - GradientBoosting
+
+groq:
+  model: "llama-3.3-70b-versatile"
+  max_tokens: 1024
+  temperature: 0.2
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true

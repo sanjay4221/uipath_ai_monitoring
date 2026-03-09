@@ -1,0 +1,11 @@
+{
+  "timestamp": "2024-06-15 14:35:22",
+  "log_level": "ERROR",
+  "process_name": "SAPIntegration",
+  "robot_name": "Robot_001",
+  "message": "Error occured while getting Incoming Mails - exception:    at UiPath.Mail.OutlookAPI.GetMessages(MAPIFolder inboxFolder, Int32 count, MailFilterVariant filterVariant, EOrderByDate orderByDate,",
+  "exception_type": "ApplicationException",
+  "exception_message": "UiPath.Mail.OutlookAPI.GetMessages(MAPIFolder inboxFolder",
+  "duration_ms": 25000,
+  "retry_count": 1
+}
