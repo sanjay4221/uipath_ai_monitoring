@@ -122,10 +122,10 @@ GET  /health          Health check
 GET  /metrics         Latest model evaluation metrics
 POST /predict         ML classification only (fast, no LLM)
 POST /analyse         ML classification + Groq AI analysis
----
+
 
 ### Example `/predict` request
----json
+json
 {
   "timestamp": "2024-06-15 14:35:22",
   "log_level": "ERROR",
@@ -134,9 +134,6 @@ POST /analyse         ML classification + Groq AI analysis
   "exception_type": "SelectorNotFoundException",
   "retry_count": 3
 }
----
-
----
 
 ## License
 MIT — free to use and modify for your RPA monitoring needs.
